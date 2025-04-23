@@ -26,9 +26,10 @@ public class ResponseService<T> {
         this.statusCode = HttpStatus.BAD_REQUEST.value();
         this.message = message;
         this.data = data;
-        this.rc = "0400";
+        this.rc = rc;
         return this;
     }
+    
     ResponseService internalServerError(String error) {
         this.statusCode = HttpStatus.INTERNAL_SERVER_ERROR.value();
         this.message = error;

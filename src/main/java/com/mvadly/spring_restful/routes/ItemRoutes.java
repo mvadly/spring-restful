@@ -4,6 +4,13 @@ import com.mvadly.spring_restful.common.Response;
 import com.mvadly.spring_restful.controller.ItemController;
 
 import com.mvadly.spring_restful.entity.ItemEntity;
+
+import com.mvadly.spring_restful.model.ApiResponse;
+import com.mvadly.spring_restful.model.RequestItem;
+import com.mvadly.spring_restful.model.ResponseItem;
+import jakarta.validation.Valid;
+
+import org.hibernate.mapping.Map;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +30,8 @@ public class ItemRoutes {
     }
 
     @PostMapping
-    public ResponseEntity<Response> createItem(@RequestBody ItemEntity item) {
-        return controller.create(item);
+    public ApiResponse<ResponseItem> createItem(@RequestBody RequestItem item) {
+        return ApiResponse.<ResponseItem>builder().data(item).build();
     }
 
 }
